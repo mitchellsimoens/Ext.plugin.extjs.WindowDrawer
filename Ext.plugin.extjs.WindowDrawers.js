@@ -141,7 +141,7 @@ Ext.define('Ext.plugin.extjs.WindowDrawers', {
 
 		me.isShown = me.parentMoving ? true : false;
 
-		if (!!anim) {
+		if (!!!anim) {
 			me.el.hide();
 		}
 	},
