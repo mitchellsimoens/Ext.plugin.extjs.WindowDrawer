@@ -135,13 +135,14 @@ Ext.define('Ext.plugin.extjs.WindowDrawers', {
 	},
 
 	hide: function(anim) {
-		var me = this;
+		var me = this,
+			anim = Ext.isDefined(anim) ? anim : me.useAnim;
 
 		me.doAnim(false, anim);
 
 		me.isShown = me.parentMoving ? true : false;
 
-		if (!!!anim) {
+		if (!anim) {
 			me.el.hide();
 		}
 	},
@@ -155,7 +156,7 @@ Ext.define('Ext.plugin.extjs.WindowDrawers', {
 			anim = {
 				listeners: {
 					scope : me,
-					afteranimate: me.onAfterAnimate //makes sure window's are hidden and not closed
+					afteranimate: me.onAfterAnimate //makes sure window's el is hidden after animation
 				}
 			};
 		}

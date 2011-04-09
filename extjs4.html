@@ -6,7 +6,7 @@
         <link rel="stylesheet" type="text/css" href="http://extjs4/resources/css/ext-all.css" />
         <script type="text/javascript" src="http://extjs4/bootstrap.js"></script>
 
-        <script language="javascript" src="Ext.plugin.extjs.WindowDrawers.js"></script>
+        <script language="javascript" src="Ext.plugin.extjs.WindowDrawer.js"></script>
 
         <script language="javascript">
         Ext.require([
@@ -36,79 +36,86 @@
 				constrain   : true,
 				title       : 'Example Window with Four Drawers',
 				buttonAlign : 'center',
-				tbar        : [
+				dockedItems : [
 					{
-						text: 'SHOW ALL',
-						handler: function() {
-							win.drawers.n.show();
-							win.drawers.s.show();
-							win.drawers.w.show();
-							win.drawers.e.show();
-						}
+						xtype : 'toolbar',
+						dock  : 'top',
+						items : [
+							{
+								text    : 'SHOW NORTH',
+								handler : function() {
+									win.drawers.n.show();
+								}
 
+							},
+							'->',
+							{
+								text    : 'HIDE NORTH',
+								handler : function() {
+									win.drawers.n.close();
+								}
+							}
+						]
 					},
-					'->',
 					{
-						text: 'HIDE ALL',
-						handler: function() {
-							win.drawers.n.close();
-							win.drawers.s.close();
-							win.drawers.w.close();
-							win.drawers.e.close();
-						}
-					}
-				],
-				bbar: [
-					{
-						text: 'ST',
-						handler: function() {
-							win.drawers.n.show();
-						}
+						xtype : 'toolbar',
+						dock  : 'top',
+						items : [
+							{
+								text    : 'SHOW WEST',
+								handler : function() {
+									win.drawers.w.show();
+								}
 
+							},
+							'->',
+							{
+								text    : 'HIDE WEST',
+								handler : function() {
+									win.drawers.w.close();
+								}
+							}
+						]
 					},
 					{
-						text: 'SR',
-						handler: function() {
-							win.drawers.e.show();
-						}
-					},
-					{
-						text: 'SB',
-						handler: function() {
-							win.drawers.s.show();
-						}
-					},
-					{
-						text: 'SL',
-						handler: function() {
-							win.drawers.w.show();
-						}
+						xtype : 'toolbar',
+						dock  : 'bottom',
+						items : [
+							{
+								text    : 'SHOW SOUTH',
+								handler : function() {
+									win.drawers.s.show();
+								}
 
-					},
-					'->',
-					{
-						text: 'HT',
-						handler: function() {
-							win.drawers.n.close();
-						}
-					},
-					{
-						text: 'HR',
-						handler: function() {
-							win.drawers.e.close();
-						}
+							},
+							'->',
+							{
+								text    : 'HIDE SOUTH',
+								handler : function() {
+									win.drawers.s.close();
+								}
+							}
+						]
 					},
 					{
-						text: 'HB',
-						handler: function() {
-							win.drawers.s.close();
-						}
-					},
-					{
-						text: 'HL',
-						handler: function() {
-							win.drawers.w.close();
-						}
+						xtype : 'toolbar',
+						dock  : 'bottom',
+						items : [
+							{
+								text    : 'SHOW EAST',
+								handler : function() {
+									win.drawers.e.show();
+								}
+
+							},
+							'->',
+							{
+								text    : 'HIDE EAST',
+								handler : function() {
+									win.drawers.e.close();
+								}
+							}
+						]
 					}
 				],
 				plugins : [
@@ -118,34 +125,36 @@
                         useAnim   : false,
 						height    : 120,
 						minHeight : 120,
-						html      : 'South Drawer - No Animatoin -  no title',
+						title     : 'South Drawer',
+						html      : 'South Drawer - No Animatoin -  With title',
 						bbar      : genericTbar
 				    },
 				    {
-                        ptype        : "windowdrawer",
-                        side         : "e", // Can be 'n', 'e', 's', 'w'
-                        useAnim      : true,
-						width     : 120,
+                        ptype     : "windowdrawer",
+                        side      : "e", // Can be 'n', 'e', 's', 'w'
+                        useAnim   : true,
+						width     : 200,
 						minWidth  : 120,
-						html      : 'East Drawer - With Animatoin -  no title',
+						title     : 'East Drawer',
+						html      : 'East Drawer - With Animatoin -  With title',
 						bbar      : genericTbar
 				    },
 				    {
-                        ptype        : "windowdrawer",
-                        side         : "n", // Can be 'n', 'e', 's', 'w'
-                        useAnim      : true,
-						height    : 120,
+                        ptype     : "windowdrawer",
+                        side      : "n", // Can be 'n', 'e', 's', 'w'
+                        useAnim   : true,
+						height    : 200,
 						minHeight : 120,
-						html      : 'North Drawer - With Animatoin -  no title',
+						html      : 'North Drawer - With Animatoin -  No title',
 						bbar      : genericTbar
 				    },
 				    {
-                        ptype        : "windowdrawer",
-                        side         : "w", // Can be 'n', 'e', 's', 'w'
-                        useAnim      : false,
+                        ptype     : "windowdrawer",
+                        side      : "w", // Can be 'n', 'e', 's', 'w'
+                        useAnim   : false,
 						width     : 120,
 						minWidth  : 120,
-						html      : 'West Drawer - No Animatoin -  no title',
+						html      : 'West Drawer - No Animatoin -  No title',
 						bbar      : genericTbar
 				    },
 				]
