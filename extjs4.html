@@ -1,0 +1,158 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+        <title>Window Drawer Basic Example</title>
+        <link rel="stylesheet" type="text/css" href="http://extjs4/resources/css/ext-all.css" />
+        <script type="text/javascript" src="http://extjs4/bootstrap.js"></script>
+
+        <script language="javascript" src="Ext.plugin.extjs.WindowDrawers.js"></script>
+
+        <script language="javascript">
+        Ext.require([
+            "Ext.window.Window"
+        ]);
+
+		Ext.onReady(function(){
+			var win,
+			    genericTbar = [
+                    {
+                        text : 'Button1'
+                    },
+                    {
+                        text : 'Button2'
+                    }
+                ];
+
+			win = Ext.create("widget.window", {
+			    layout      : 'fit',
+				width       : 350,
+				height      : 250,
+				modal       : false,
+				minHeight   : 225,
+				closeAction :'hide',
+				plain       : true,
+				closable    : false,
+				constrain   : true,
+				title       : 'Example Window with Four Drawers',
+				buttonAlign : 'center',
+				tbar        : [
+					{
+						text: 'SHOW ALL',
+						handler: function() {
+							win.drawers.n.show();
+							win.drawers.s.show();
+							win.drawers.w.show();
+							win.drawers.e.show();
+						}
+
+					},
+					'->',
+					{
+						text: 'HIDE ALL',
+						handler: function() {
+							win.drawers.n.close();
+							win.drawers.s.close();
+							win.drawers.w.close();
+							win.drawers.e.close();
+						}
+					}
+				],
+				bbar: [
+					{
+						text: 'ST',
+						handler: function() {
+							win.drawers.n.show();
+						}
+
+					},
+					{
+						text: 'SR',
+						handler: function() {
+							win.drawers.e.show();
+						}
+					},
+					{
+						text: 'SB',
+						handler: function() {
+							win.drawers.s.show();
+						}
+					},
+					{
+						text: 'SL',
+						handler: function() {
+							win.drawers.w.show();
+						}
+
+					},
+					'->',
+					{
+						text: 'HT',
+						handler: function() {
+							win.drawers.n.close();
+						}
+					},
+					{
+						text: 'HR',
+						handler: function() {
+							win.drawers.e.close();
+						}
+					},
+					{
+						text: 'HB',
+						handler: function() {
+							win.drawers.s.close();
+						}
+					},
+					{
+						text: 'HL',
+						handler: function() {
+							win.drawers.w.close();
+						}
+					}
+				],
+				plugins : [
+				    {
+                        ptype     : "windowdrawer",
+                        side      : "s", // Can be 'n', 'e', 's', 'w'
+                        useAnim   : false,
+						height    : 120,
+						minHeight : 120,
+						html      : 'South Drawer - No Animatoin -  no title',
+						bbar      : genericTbar
+				    },
+				    {
+                        ptype        : "windowdrawer",
+                        side         : "e", // Can be 'n', 'e', 's', 'w'
+                        useAnim      : true,
+						width     : 120,
+						minWidth  : 120,
+						html      : 'East Drawer - With Animatoin -  no title',
+						bbar      : genericTbar
+				    },
+				    {
+                        ptype        : "windowdrawer",
+                        side         : "n", // Can be 'n', 'e', 's', 'w'
+                        useAnim      : true,
+						height    : 120,
+						minHeight : 120,
+						html      : 'North Drawer - With Animatoin -  no title',
+						bbar      : genericTbar
+				    },
+				    {
+                        ptype        : "windowdrawer",
+                        side         : "w", // Can be 'n', 'e', 's', 'w'
+                        useAnim      : false,
+						width     : 120,
+						minWidth  : 120,
+						html      : 'West Drawer - No Animatoin -  no title',
+						bbar      : genericTbar
+				    },
+				]
+			});
+			win.show();
+		});
+        </script>
+    </head>
+    <body></body>
+</html>
